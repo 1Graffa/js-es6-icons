@@ -14,7 +14,7 @@ header{
   padding:20px;
   height: 70px;
   background-color: white;
-  color : rgb(24, 135, 238);
+  color : rgb(24,135,238);
   font-size: 300%;
 }
 nav{
@@ -30,25 +30,29 @@ nav{
   filter: drop-shadow(1px 1px 1px black);
 }
 nav select{
-  margin-left: 15px;
+  margin-left: 10px;
 }
 main {
-  height: 500px;
+  height: 100%;
   background-color: rgb(159, 161, 167);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-main .icona{
-  height: 80px;
+main .icons{
+  text-align: center;
   background-color: white;
   padding:20px;
-  margin : 20px;
-  flex-basis: calc(100% / 6 - 20px);
+  margin: 20px;
+  flex-basis: calc(100% / 5 - 40px);
   border-radius: 10px;
-  text-align: center;
   filter: drop-shadow(1px 1px 1px black);
 }
-main .icona i{
+.box i{
   font-size: 250%;
+  padding: 10px;
+}
+.box .title{
+  text-transform: uppercase;
+  font-size: 20px;
 }
