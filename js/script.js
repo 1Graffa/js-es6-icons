@@ -1,3 +1,11 @@
+// Stampare poi tutte le icone utilizzando il template literal.
+
+// Stampare quindi nella select tutti i tipi che avete in precedenza selezionato (animal, vegetable, icon).
+
+// Filtrare i risultati in base alla categoria (ricordate di svuotare il container).
+
+// Utilizzate forEach, map e filter e cercate di strutturare tutto con le funzioni.
+
 $(document).ready(function(){
 
   const icons = [
@@ -117,57 +125,66 @@ $(document).ready(function(){
 
   //NB per fare ciò abbiamo creato un nuovo array TYPES nel quale attraverso una funzione cicliamo gli oggetti di ICONS con forEach per pusharci gli elementi che ci servono (usando includes per evitare ripetizioni)
 
-//ORA mappiamo l'array in modo da aggiungere il colore (usiamo il metodo indexOf che mi va a prendere l'indice dell array di quel dato elemento ovvero nel nostro caso 0,1 e 2)
+//ORA mappiamo l'array in modo da AGGIUNGERE IL COLORE (usiamo il metodo indexOf che mi va a prendere l'indice dell array di quel dato elemento ovvero nel nostro caso 0,1 e 2)
   const iconsColor = icons.map((element) => {
       const indexType = types.indexOf(element.type);
-      console.log(indexType);
+      // console.log(indexType);
       // console.log(colors[indexType]);
       return {
+        //nel return : a tutti gil elementi mi aggiungi il colore in base all indice del type (0,1 e 2)
         ...element,
         color: colors[indexType]
         }
 
   });
-//
-  console.log(iconsColor);
+// da questo consolelog visualizziamo l'aggiunta dei colori
+  // console.log(iconsColor);
 
   const container = $(".icons");
-
+  //stampiamo le icone nell'html richiamando la funzione
   printIcons(iconsColor, container);
 
   const select = $("#filtro");
+  // stampiamo le varianti dei types nella select richiamando funzione
   printOptions(types,select);
 
   //utilizziamo .change per far funzionare il filtro
   select.change(function() {
     const selected = $(this).val();
-
-    const filter = filterValue(iconsColor, selected);
-
-    printIcons(filteredIcons,container);
+  //creiamo una costante e richiamiamo la funzione per funzionamento
+    const filterIcon = filterValue(iconsColor, selected);
+    // console.log(filterIcon);
+    // printIcons(filteredIcons,container);
+    printIcons(filterIcon,container);
   });
 
+
+  // funzione per filtrare dal select dell' html
   function filterValue(array, type){
     const filteredIcons = array.filter((element) => {
       return element.type == type;
     });
-    return filteredIcons;
+    // Se ci sono elementi nell'array filtrata ...
+    if (filteredIcons.length > 0) {
+    // ....mi restituisce le filteredIcons
+      return filteredIcons;
+    }
+    // ...altrimenti mi da tutta l'array (All)
+    return array;
   }
 
   //FUNZIONE PER select
   function printOptions(array,select){
     array.forEach((element) => {
       select.append(`
-      <option value="animal">${element}</option>
+      <option value="${element}">${element}</option>
       `
       )
-
     });
-
   }
-
   // FUNZIONE PER STAMPARE LE ICONE
   function printIcons(array,container){
+    //gli diciamo di svuotare il container in partenza
     container.html(" ");
     array.forEach((element) => {
 
@@ -185,7 +202,6 @@ $(document).ready(function(){
         );
 
     });
-
   }
   // FUNZIONE GETTYPES
   function getTypes(array){
@@ -200,12 +216,5 @@ $(document).ready(function(){
   return types;
   }
 
-// Stampare poi tutte le icone utilizzando il template literal.
-
-// Stampare quindi nella select tutti i tipi che avete in precedenza selezionato (animal, vegetable, icon).
-
-// Filtrare i risultati in base alla categoria (ricordate di svuotare il container).
-
-// Utilizzate forEach, map e filter e cercate di strutturare tutto con le funzioni.
 
 });
