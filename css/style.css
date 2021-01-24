@@ -5,6 +5,7 @@
 }
 body{
   font-family: monospace;
+  background-color: rgb(159, 161, 167);
 }
 .container{
   width: 100%;
@@ -12,13 +13,13 @@ body{
 }
 header{
   padding:20px;
-  height: 70px;
+  height: 66px;
   background-color: white;
   color : rgb(24,135,238);
   font-size: 300%;
 }
 nav{
-  height: 70px;
+  height: 66px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,11 +34,8 @@ nav select{
   margin-left: 10px;
 }
 main {
-  height: 100%;
-  background-color: rgb(159, 161, 167);
+
   display: flex;
-  justify-content: space-between;
-  
   flex-wrap: wrap;
 }
 main .icons{
@@ -46,7 +44,7 @@ main .icons{
   background-color: white;
   padding:20px;
   margin: 20px;
-  flex-basis: calc(100% / 5 - 40px);
+  width: calc(100% / 5 - 40px);
   border-radius: 10px;
   filter: drop-shadow(1px 1px 1px black);
 }

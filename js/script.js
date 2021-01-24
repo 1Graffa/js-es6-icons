@@ -158,6 +158,7 @@ $(document).ready(function(){
     printIcons(filterIcon,container);
   });
 
+//****************FUNZIONI************************
 
   // funzione per filtrare dal select dell' html
   function filterValue(array, type){
